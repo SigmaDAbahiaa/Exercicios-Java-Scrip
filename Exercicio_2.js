@@ -1,40 +1,16 @@
-//inicio do algoritimo
 const prompt = require('prompt-sync')();
 console.clear();
 
-//variaveis
-const time = new Date();
-const dia = time.getDate();
-const mes = time.getMonth();
-const ano = time.getFullYear();
-var DataDeNascimento;
-var DataAtual;
-var idade;
-var nome;
+// Entrada
+console.log(`${"=".repeat(12)} Olá, este é um algoritmo de autenticação ${"=".repeat(12)}\n`);
+const nome = prompt("Digite seu nome: ");
+const dataNasc = prompt("Digite sua data de nascimento (dd-mm-aaaa): ");
 
-//entrada
-console.log(`${"=".repeat(12)} Olá, Este é um algoritimo de autenticação ${"=".repeat(12)}\n`);
-nome = prompt("Digite seu nome: ");
+// Processamento
+const [dia, mes, ano] = dataNasc.split("-").map(Number);
+const dataAtual = new Date();
+const idade = dataAtual.getFullYear() - ano - (dataAtual.getMonth() + 1 < mes || (dataAtual.getMonth() + 1 === mes && dataAtual.getDate() < dia) ? 1 : 0);
 
-console.log("\nDigite sua data de nascimento com dia, mês e ano separados por '-' deste jeito: 00-00-0000");
-DataDeNascimento = prompt("Data de nascimento: ");
-
-DataDeNascimento = Number((DataDeNascimento.split("-").reverse().join("")));
-if (mes < 10) {
-    zero = '0';
-}
-else {
-    zero = '';
-}
-DataAtual = Number(ano + '' + zero + mes + '' + dia);
-
-idade = DataAtual - DataDeNascimento;
-idade = Number(idade.toString().substring(0, 2));
-
-console.log(`\nOlá ${nome}, Você tem ${idade} anos`);
-if (idade >= 18) {
-    console.log("Acesso Liberado");
-}
-else {
-    console.log("Acesso Negado");
-}
+// Saída
+console.log(`\nOlá ${nome}, você tem ${idade} anos`);
+console.log(idade >= 18 ? "Acesso Liberado" : "Acesso Negado");
