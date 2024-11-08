@@ -1,17 +1,10 @@
-//inicio do algoritimo
 const prompt = require('prompt-sync')();
 console.clear();
 
-//variaveis
-var Velocidade_Ms;
-var Velocidade_Kmh;
+// Entrada
+console.log(`${"=".repeat(12)} Algoritmo que converte m/s para km/h ${"=".repeat(12)}\n`);
+const velocidadeMs = prompt("Digite a velocidade em m/s: ");
 
-//entrada
-console.log(`${"=".repeat(12)} Algoritimo que converte m/s para km/h ${"=".repeat(12)}\n`);
-
-console.log("Digite em (m/s) Metros por segundo a velocidade que deseja ser convertida.");
-Velocidade_Ms = prompt("C/>: ");
-
-//saida
-Velocidade_Kmh = Velocidade_Ms * 3.6;
-console.log(`\n${Velocidade_Ms} m/s Convertidos para km/h é igual a: ${Velocidade_Kmh.toFixed(2)} km/h`);
+// Cálculo e Saída
+const velocidadeKmh = velocidadeMs * 3.6;
+console.log(`\n${velocidadeMs} m/s é igual a: ${velocidadeKmh.toFixed(2)} km/h`);
