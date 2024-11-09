@@ -1,24 +1,18 @@
-//inicio do algoritimo
 const prompt = require('prompt-sync')();
 console.clear();
 
-//variaveis
-const ValorTotal = 280000;
-var ValorTotalPago;
-var ValorFinal;
-const Entrada = 2500;
-const parcelas = 65;
-var ValorFinanciado;
-const TaxaAnual = 0.12;
-var TaxaMensal;
-var parcela;
+// Constantes
+const VALOR_TOTAL = 280000;
+const ENTRADA = 2500;
+const PARCELAS = 65;
+const TAXA_ANUAL = 0.12;
 
-//saida
-ValorFinanciado = ValorTotal - Entrada;
-TaxaMensal = Math.pow(1 + TaxaAnual, (1 / 12)) - 1;
-parcela = ValorFinanciado * TaxaMensal / (1 - Math.pow(1 + TaxaMensal, parcelas * -1));
+// Cálculo
+const valorFinanciado = VALOR_TOTAL - ENTRADA;
+const taxaMensal = Math.pow(1 + TAXA_ANUAL, 1 / 12) - 1;
+const parcela = (valorFinanciado * taxaMensal) / (1 - Math.pow(1 + taxaMensal, -PARCELAS));
+const valorTotalPago = parcela * PARCELAS;
+const valorFinal = valorTotalPago + ENTRADA;
 
-ValorTotalPago = parcela * parcelas;
-ValorFinal = ValorTotalPago + Entrada;
-
-console.log(`O valor final que Paulo irá pagar é de: R$${ValorFinal.toFixed(2)}`);
+// Saída
+console.log(`O valor final que Paulo irá pagar é de: R$ ${valorFinal.toFixed(2)}`);
