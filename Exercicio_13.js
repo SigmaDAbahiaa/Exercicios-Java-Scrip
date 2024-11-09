@@ -1,35 +1,21 @@
-//inicio do algoritimo
 const prompt = require('prompt-sync')();
 console.clear();
 
-//variaveis
-var Caractere;
-var num;
+// Entrada
+console.log(`${"=".repeat(12)} Algoritmo que classifica um caractere ${"=".repeat(12)}\n`);
+const caractere = prompt("Tecle um caractere: ");
 
-//entrada
-console.log(`${"=".repeat(12)} Algoritimo que exibe se um digito é uma vogal, consoante, numero ou simbolo ${"=".repeat(12)}\n`);
-
-Caractere = prompt("Tecle um Digito: ");
-
-//saida
-if (Caractere.toString().length == 1){
-    num = parseInt(Caractere);
-
-    if (isNaN(num) == false){
-        console.log(`\nO Caracteré: ${Caractere} é um Numero.`);
+// Verificação e Saída
+if (caractere.length === 1) {
+    if (!isNaN(caractere)) {
+        console.log(`\nO caractere: ${caractere} é um Número.`);
+    } else if ("aeiou".includes(caractere.toLowerCase())) {
+        console.log(`\nO caractere: ${caractere} é uma Vogal.`);
+    } else if (/[a-zA-Z]/.test(caractere)) {
+        console.log(`\nO caractere: ${caractere} é uma Consoante.`);
+    } else {
+        console.log(`\nO caractere: ${caractere} é um Símbolo.`);
     }
-    else {
-        if ("aeiou".indexOf(Caractere.toLowerCase()) >= 0){
-            console.log(`\nO Caracteré: ${Caractere} é uma Vogal.`);
-        }
-        else if (Caractere.match(/[a-zA-Z]/)){
-            console.log(`\nO Caracteré: ${Caractere} é uma Consoante.`);
-        }
-        else{
-            console.log(`\nO Caracteré: ${Caractere} é um Símbolo.`);
-        }
-    }
-}
-else{
-    console.log("\nInsira Apenas um Digito !");
+} else {
+    console.log("\nInsira apenas um caractere!");
 }
