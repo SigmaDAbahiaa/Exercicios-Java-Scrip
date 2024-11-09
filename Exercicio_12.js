@@ -1,22 +1,15 @@
-//inicio do algoritimo
 const prompt = require('prompt-sync')();
 console.clear();
 
-//variaveis
-var taxa_desconto = 0.11;
-var desconto_maximo = 334.29;
-var salario;
-var desconto;
+// Constantes
+const TAXA_DESCONTO = 0.11;
+const DESCONTO_MAXIMO = 334.29;
 
-//entrada
-console.log(`${"=".repeat(12)} Algoritimo que calcula o desconto previdenciario ${"=".repeat(12)}\n`);
-salario = prompt("Informe o Salario: ");
+// Entrada
+console.log(`${"=".repeat(12)} Algoritmo que calcula o desconto previdenciário ${"=".repeat(12)}\n`);
+const salario = Number(prompt("Informe o Salário: "));
 
-//saida
-desconto = salario * taxa_desconto;
+// Cálculo do desconto
+const desconto = Math.min(salario * TAXA_DESCONTO, DESCONTO_MAXIMO);
 
-if (desconto > desconto_maximo) {
-    desconto = desconto_maximo;
-}
-
-console.log(`\nO Desconto Previdenciario Será de: R$ ${desconto.toFixed(2)}`);
+console.log(`\nO Desconto Previdenciário será de: R$ ${desconto.toFixed(2)}`);
